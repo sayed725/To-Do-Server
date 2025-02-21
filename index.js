@@ -84,6 +84,19 @@ async function run() {
         res.send(result);
       });
 
+        // Update a task --->
+    app.put("/update-task/:id", async (req, res) => {
+        const task = req.body;
+        const id = req.params.id;
+        const filter = { _id: new ObjectId(id) };
+        const updatedCategory = {
+          $set: task,
+        };
+        const result = await tasksCollection.updateOne(filter, updatedCategory);
+        res.send(result);
+      });
+  
+
 
 
 
